@@ -173,7 +173,8 @@ paymentForm.addEventListener('submit', async (e) => {
 
 async function fetchTransactions() {
     try {
-        const res = await fetch(`${API_URL}/payments`, {
+        const endpoint = user.role === 'admin' ? '/payments/all' : '/payments';
+        const res = await fetch(`${API_URL}${endpoint}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await res.json();
@@ -196,9 +197,16 @@ function renderTransactions(transactions) {
     transactions.forEach(t => {
         const div = document.createElement('div');
         div.className = 'transaction-item';
+        
+        let userHtml = '';
+        if (user.role === 'admin' && t.user) {
+            userHtml = `<div style="font-size: 0.8rem; color: var(--text-muted);">${t.user.username || t.user.email}</div>`;
+        }
+
         div.innerHTML = `
             <div>
                 <div style="font-weight: 500;">Payment</div>
+                ${userHtml}
                 <div class="t-date">${new Date(t.createdAt).toLocaleDateString()}</div>
             </div>
             <div class="t-amount">$${t.amount}</div>
