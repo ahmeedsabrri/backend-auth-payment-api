@@ -74,6 +74,10 @@
 
 ## 📖 API Documentation
 
+### Interactive Docs (Swagger UI)
+Explore and test the API endpoints directly via the browser:
+👉 **[http://localhost:5000/api-docs](http://localhost:5000/api-docs)**
+
 ### Authentication
 
 | Method | Endpoint | Description | Access |
