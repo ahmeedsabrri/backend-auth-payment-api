@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Platform | Premium Access</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">School<span class="highlight">Platform</span></div>
+            <div class="nav-links">
+                <button id="nav-login-btn" class="btn btn-text active">Login</button>
+                <button id="nav-register-btn" class="btn btn-text">Register</button>
+                <button id="nav-logout-btn" class="btn btn-secondary hidden">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Auth Section -->
+        <section id="auth-section" class="section active">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div id="login-form-container" class="form-card">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">Access your dashboard</p>
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Sign In</button>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form-container" class="form-card hidden">
+                    <h2>Create Account</h2>
+                    <p class="subtitle">Join our community today</p>
+                    <form id="register-form">
+                        <div class="input-group">
+                            <label for="reg-username">Username</label>
+                            <input type="text" id="reg-username" placeholder="johndoe" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" placeholder="••••••••" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-role">Role</label>
+                            <select id="reg-role">
+                                <option value="user">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="section hidden">
+            <div class="dashboard-header">
+                <h1>Hello, <span id="user-name">User</span>!</h1>
+                <p class="role-badge" id="user-role">Student</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Payment Card -->
+                <div class="card payment-card">
+                    <h3>Make a Payment</h3>
+                    <p>Secure transaction via MockStripe</p>
+                    <form id="payment-form">
+                        <div class="input-group">
+                            <label>Amount (USD)</label>
+                            <input type="number" id="pay-amount" value="100" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Pay Now</button>
+                    </form>
+                </div>
+
+                <!-- Transactions List -->
+                <div class="card transactions-card">
+                    <h3>Recent Transactions</h3>
+                    <div id="transaction-list" class="transaction-list">
+                        <!-- Items will be injected here -->
+                        <div class="empty-state">No transactions yet.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="toast" class="toast hidden">Message here</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
